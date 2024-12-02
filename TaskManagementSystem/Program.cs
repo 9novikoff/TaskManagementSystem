@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using TaskManagementSystem.DAL;
+
 namespace TaskManagementSystem;
 
 public class Program
@@ -5,6 +8,9 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+
+        builder.Services.AddDbContext<TaskDbContext>(optionsBuilder =>
+            optionsBuilder.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
         
         builder.Services.AddAuthorization();
 
