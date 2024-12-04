@@ -2,7 +2,7 @@
 
 namespace TaskManagementSystem.DAL.Repositories;
 
-class UserRepository : IUserRepository
+public class UserRepository : IUserRepository
 {
     private readonly TaskDbContext _context;
 
