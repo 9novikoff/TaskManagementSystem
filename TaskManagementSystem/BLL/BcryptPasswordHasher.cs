@@ -1,5 +1,9 @@
 ﻿namespace TaskManagementSystem.BLL;
 
+/// <summary>
+/// Provides methods for securely hashing and verifying passwords using the BCrypt algorithm.
+/// Read more about BCrypt: https://en.wikipedia.org/wiki/Bcrypt
+/// </summary>
 public static class BcryptPasswordHasher
 {
     public static string HashPassword(string password)
