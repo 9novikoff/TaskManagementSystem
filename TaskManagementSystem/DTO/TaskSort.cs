@@ -3,5 +3,5 @@
 public class TaskSort
 {
     public string? SortColumn { get; set; }
-    public readonly bool IsDesc = false;
+    public bool IsDesc { get; set; }
 }

@@ -10,6 +10,7 @@ public class MappingProfile : Profile
     {
         CreateMap<RegisterDto, User>();
         CreateMap<UserTaskDto, UserTask>();
+        CreateMap<CreateUserTaskDto, UserTask>();
         CreateMap<UserTask, UserTaskDto>();
         CreateMap<User, UserDto>();
     }

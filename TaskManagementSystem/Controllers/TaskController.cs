@@ -17,9 +17,9 @@ public class TaskController : ControllerBase
     {
         _taskService = taskService;
     }
-
+    
     [HttpPost]
-    public async Task<IActionResult> PostTask(UserTaskDto userTaskDto)
+    public async Task<IActionResult> PostTask(CreateUserTaskDto userTaskDto)
     {
         var userId = GetUserIdFromJwtToken();
 
@@ -32,9 +32,9 @@ public class TaskController : ControllerBase
     public async Task<IActionResult> GetTasks([FromQuery]TaskFilter filter, [FromQuery]TaskSort sort, [FromQuery]TaskPagination pagination)
     {
         var userId = GetUserIdFromJwtToken();
-
+    
         var serviceResult = await _taskService.GetAllUserTasks(userId, filter, sort, pagination);
-
+    
         return serviceResult.Match<IActionResult>(t => Ok(t), f => BadRequest(f.ErrorMessage));
     }
 
@@ -49,7 +49,7 @@ public class TaskController : ControllerBase
     }
     
     [HttpPut("{taskId:guid}")]
-    public async Task<IActionResult> PutTask(Guid taskId, UserTaskDto userTaskDto)
+    public async Task<IActionResult> PutTask(Guid taskId, CreateUserTaskDto userTaskDto)
     {
         var userId = GetUserIdFromJwtToken();
 

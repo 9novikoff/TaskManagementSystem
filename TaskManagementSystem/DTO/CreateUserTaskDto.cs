@@ -1,11 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using TaskManagementSystem.DAL.Entities;
+﻿using TaskManagementSystem.DAL.Entities;
 
 namespace TaskManagementSystem.DTO;
 
-public class UserTaskDto
+public class CreateUserTaskDto
 {
-    public Guid Id { get; set; }
     public string Title { get; set; }
     public string? Description { get; set; }
     public DateTime? DueDate { get; set; }

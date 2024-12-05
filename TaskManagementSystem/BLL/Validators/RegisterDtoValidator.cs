@@ -9,7 +9,9 @@ public class RegisterDtoValidator : AbstractValidator<RegisterDto>
     public RegisterDtoValidator()
     {
         RuleFor(x => x.Username)
-            .NotEmpty().MinimumLength(ValidationConstants.UsernameOrEmailMinLength);
+            .NotEmpty().MinimumLength(ValidationConstants.UsernameOrEmailMinLength)
+            .Must(username => !username.Contains($"@"))
+            .WithMessage("The username cannot contain the '@' character."); // To avoid using email as username
 
         RuleFor(x => x.Email)
             .NotEmpty()

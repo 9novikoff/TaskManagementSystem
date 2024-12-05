@@ -3,9 +3,9 @@ using TaskManagementSystem.DTO;
 
 namespace TaskManagementSystem.BLL.Validators;
 
-public class UserTaskDtoValidator: AbstractValidator<UserTaskDto>
+public class CreateUserTaskDtoValidator: AbstractValidator<CreateUserTaskDto>
 {
-    public UserTaskDtoValidator()
+    public CreateUserTaskDtoValidator()
     {
         RuleFor(task => task.Title)
             .NotEmpty()
@@ -14,9 +14,9 @@ public class UserTaskDtoValidator: AbstractValidator<UserTaskDto>
         RuleFor(task => task.Description)
             .MaximumLength(ValidationConstants.TaskDescriptionMaxLength);
         
-        RuleFor(task => task.DueData)
+        RuleFor(task => task.DueDate)
             .GreaterThanOrEqualTo(DateTime.Now).WithMessage("Due date cannot be in the past.")
-            .When(task => task.DueData.HasValue);
+            .When(task => task.DueDate.HasValue);
         
         RuleFor(task => task.Status)
             .NotNull()

@@ -1,4 +1,5 @@
-﻿using TaskManagementSystem.DAL.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using TaskManagementSystem.DAL.Entities;
 
 namespace TaskManagementSystem.DAL.Repositories;
 
@@ -13,7 +14,7 @@ class TaskRepository : ITaskRepository
     
     public IQueryable<UserTask> GetTasks()
     {
-        return _context.Tasks;
+        return _context.Tasks.AsNoTracking();
     }
 
     public async Task InsertTask(UserTask user)

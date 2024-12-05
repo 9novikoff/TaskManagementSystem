@@ -29,7 +29,10 @@ public class Program
 
         builder.Services.AddScoped<IValidator<LoginDto>, LoginDtoValidator>();
         builder.Services.AddScoped<IValidator<RegisterDto>, RegisterDtoValidator>();
-        builder.Services.AddScoped<IValidator<UserTaskDto>, UserTaskDtoValidator>();
+        builder.Services.AddScoped<IValidator<CreateUserTaskDto>, CreateUserTaskDtoValidator>();
+        builder.Services.AddScoped<IValidator<TaskFilter>, TaskFilterValidator>();
+        builder.Services.AddScoped<IValidator<TaskSort>, TaskSortValidator>();
+        builder.Services.AddScoped<IValidator<TaskPagination>, TaskPaginationValidator>();
         
         builder.Services.AddSingleton<JwtGenerator>();
 
