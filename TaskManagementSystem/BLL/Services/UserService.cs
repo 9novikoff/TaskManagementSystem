@@ -27,7 +27,7 @@ public class UserService : IUserService
         _mapper = mapper;
     }
 
-    public async Task<ServiceResult<User, RegistrationFailed>> RegisterUser(RegisterDto registerDto)
+    public async Task<ServiceResult<UserDto, RegistrationFailed>> RegisterUser(RegisterDto registerDto)
     {
         var validationResult = await _registerValidator.ValidateAsync(registerDto);
 
@@ -55,7 +55,7 @@ public class UserService : IUserService
         await _repository.InsertUser(user);
         _logger.LogInformation("Successful registration attempt with username {username} and email {email}", registerDto.Username, registerDto.Email);
 
-        return user;
+        return _mapper.Map<UserDto>(user);
     }
 
     public async Task<ServiceResult<string, LoginFailed>> LoginUser(LoginDto loginDto)

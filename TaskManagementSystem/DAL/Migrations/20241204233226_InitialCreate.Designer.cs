@@ -12,7 +12,7 @@ using TaskManagementSystem.DAL;
 namespace TaskManagementSystem.Migrations
 {
     [DbContext(typeof(TaskDbContext))]
-    [Migration("20241202104934_InitialCreate")]
+    [Migration("20241204233226_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -66,7 +66,7 @@ namespace TaskManagementSystem.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("DueData")
+                    b.Property<DateTime?>("DueDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("Priority")

@@ -29,12 +29,15 @@ public class Program
 
         builder.Services.AddScoped<IValidator<LoginDto>, LoginDtoValidator>();
         builder.Services.AddScoped<IValidator<RegisterDto>, RegisterDtoValidator>();
+        builder.Services.AddScoped<IValidator<UserTaskDto>, UserTaskDtoValidator>();
         
         builder.Services.AddSingleton<JwtGenerator>();
 
         builder.Services.AddScoped<IUserRepository, UserRepository>();
-
+        builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+        
         builder.Services.AddScoped<IUserService, UserService>();
+        builder.Services.AddScoped<ITaskService, TaskService>();
 
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(x =>
         {
@@ -46,6 +49,7 @@ public class Program
                 ValidIssuer = builder.Configuration["JwtConfiguration:Issuer"],
                 ValidAudience = builder.Configuration["JwtConfiguration:Audience"]
             };
+            x.MapInboundClaims = false;
         });
         builder.Services.AddAuthorization();
         

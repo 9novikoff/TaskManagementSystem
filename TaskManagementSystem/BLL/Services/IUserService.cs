@@ -6,6 +6,6 @@ namespace TaskManagementSystem.BLL.Services;
 
 public interface IUserService
 {
-    public Task<ServiceResult<User, RegistrationFailed>> RegisterUser(RegisterDto registerDto);
+    public Task<ServiceResult<UserDto, RegistrationFailed>> RegisterUser(RegisterDto registerDto);
     public Task<ServiceResult<string, LoginFailed>> LoginUser(LoginDto loginDto);
 }
