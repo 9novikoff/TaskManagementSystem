@@ -1,7 +1,7 @@
 # Task Management System
 
 ## Overview  
-Task Management System is a simple and secure app for organizing tasks. It lets users log in, create and update tasks. Features include task filtering, sorting, and pagination, making it easy to stay organized. Built with a focus on clarity and reliability, it uses JWT for authentication and ensures clean, validated data handling. 
+Task Management System is a simple and secure app for organizing tasks. It lets users log in, create and update tasks. Features include task filtering, sorting, and pagination, making it easy to stay organized.
 
 ## Setup Instructions  
 
@@ -184,6 +184,8 @@ This project follows a layered architecture to maintain separation of concerns, 
 ### 5. AutoMapper
 - AutoMapper is used to map between DTOs and domain models. This simplifies the mapping process and ensures that only the necessary fields are transferred between layers. The `MappingProfile` class holds the configuration for mapping between models and DTOs.
 
+## Explanation for some of my choices
+https://docs.google.com/document/d/12zg2mupF7myVheodjKm3iZPrv25_hl_5-zQAGXmGCMk/edit?usp=sharing
 
 
 
