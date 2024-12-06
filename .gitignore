@@ -1,3 +1,5 @@
 .idea/
 TaskManagementSystem/bin
 TaskManagementSystem/obj
+TaskManagementSystem.Tests/bin
+TaskManagementSystem.Tests/obj
