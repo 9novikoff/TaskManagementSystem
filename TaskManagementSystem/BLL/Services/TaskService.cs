@@ -8,7 +8,7 @@ using TaskManagementSystem.DTO;
 
 namespace TaskManagementSystem.BLL.Services;
 
-class TaskService : ITaskService
+public class TaskService : ITaskService
 {
     private readonly ITaskRepository _taskRepository;
     private readonly IUserRepository _userRepository;
@@ -51,11 +51,11 @@ class TaskService : ITaskService
         
         var task = _mapper.Map<UserTask>(userTaskDto, opt => opt.AfterMap((_, dest) => dest.User = user));
 
-        await _taskRepository.InsertTask(task);
+        var insertedTask = await _taskRepository.InsertTask(task);
         
         _logger.LogInformation("Task was successfully created with title {title}", userTaskDto.Title);
 
-        return _mapper.Map<UserTaskDto>(task);
+        return _mapper.Map<UserTaskDto>(insertedTask);
     }
 
     public async Task<ServiceResult<List<UserTaskDto>, TasksRetrievalFailed>> GetAllUserTasks(Guid userId, TaskFilter filter, TaskSort sort, TaskPagination pagination)
@@ -161,11 +161,11 @@ class TaskService : ITaskService
             dest.UserId = destTask.UserId;
         }));
         
-        await _taskRepository.UpdateTask(task);
+        var updatedTask = await _taskRepository.UpdateTask(task);
         
         _logger.LogInformation("Successful task update with id {id}", task.Id);
 
-        return _mapper.Map<UserTaskDto>(task);
+        return _mapper.Map<UserTaskDto>(updatedTask);
     }
 
     public async Task<ServiceResult<bool, TaskDeletingFailed>> DeleteUserTask(Guid userId, Guid taskId)

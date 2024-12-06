@@ -1,4 +1,5 @@
-﻿using TaskManagementSystem.DAL.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using TaskManagementSystem.DAL.Entities;
 
 namespace TaskManagementSystem.DAL.Repositories;
 
@@ -13,13 +14,14 @@ public class UserRepository : IUserRepository
 
     public IQueryable<User> GetUsers()
     {
-        return _context.Users;
+        return _context.Users.AsNoTracking();
     }
 
-    public async Task InsertUser(User user)
+    public async Task<User> InsertUser(User user)
     {
-        _context.Add(user);
+        var entry = _context.Add(user);
         await _context.SaveChangesAsync();
+        return entry.Entity;
     }
 
     public async Task DeleteUser(User user)
@@ -28,10 +30,11 @@ public class UserRepository : IUserRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task UpdateUser(User user)
+    public async Task<User> UpdateUser(User user)
     {
-        _context.Update(user);
+        var entry = _context.Update(user);
         await _context.SaveChangesAsync();
+        return entry.Entity;
     }
 
     public async Task<User> GetUserById(Guid id)

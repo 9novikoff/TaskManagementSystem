@@ -3,7 +3,7 @@ using TaskManagementSystem.DAL.Entities;
 
 namespace TaskManagementSystem.DAL.Repositories;
 
-class TaskRepository : ITaskRepository
+public class TaskRepository : ITaskRepository
 {
     private readonly TaskDbContext _context;
     
@@ -17,10 +17,11 @@ class TaskRepository : ITaskRepository
         return _context.Tasks.AsNoTracking();
     }
 
-    public async Task InsertTask(UserTask user)
+    public async Task<UserTask> InsertTask(UserTask user)
     {
-        _context.Add(user);
+        var entry = _context.Add(user);
         await _context.SaveChangesAsync();
+        return entry.Entity;
     }
 
     public async Task DeleteTask(UserTask user)
@@ -30,10 +31,11 @@ class TaskRepository : ITaskRepository
 
     }
 
-    public async Task UpdateTask(UserTask user)
+    public async Task<UserTask> UpdateTask(UserTask user)
     {
-        _context.Update(user);
+        var entry = _context.Update(user);
         await _context.SaveChangesAsync();
+        return entry.Entity;
     }
 
     public async Task<UserTask> GetTaskById(Guid id)

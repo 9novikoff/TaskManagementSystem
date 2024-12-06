@@ -52,10 +52,10 @@ public class UserService : IUserService
         var user = _mapper.Map<User>(registerDto, opt => 
             opt.AfterMap((_, dest) => dest.PasswordHash = BcryptPasswordHasher.HashPassword(registerDto.Password)));
 
-        await _repository.InsertUser(user);
+        var insertedUser = await _repository.InsertUser(user);
         _logger.LogInformation("Successful registration attempt with username {username} and email {email}", registerDto.Username, registerDto.Email);
 
-        return _mapper.Map<UserDto>(user);
+        return _mapper.Map<UserDto>(insertedUser);
     }
 
     public async Task<ServiceResult<string, LoginFailed>> LoginUser(LoginDto loginDto)
