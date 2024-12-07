@@ -9,7 +9,7 @@ Task Management System is a simple and secure app for organizing tasks. It lets 
 - .NET SDK (version 8.0.0 or later)  
 - Entity Framework Core  
 - PostgreSQL
-- (Optional) Docker for containerized run  
+- (Optional) Docker, Docker Compose for containerized run  
 
 ### Steps to Run Locally  
 1. Clone the repository:  
