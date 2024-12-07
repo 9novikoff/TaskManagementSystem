@@ -19,9 +19,9 @@ public class TaskRepository : ITaskRepository
 
     public async Task<UserTask> InsertTask(UserTask user)
     {
-        var entry = _context.Add(user);
+        _context.Add(user);
         await _context.SaveChangesAsync();
-        return entry.Entity;
+        return user;
     }
 
     public async Task DeleteTask(UserTask user)
@@ -33,9 +33,9 @@ public class TaskRepository : ITaskRepository
 
     public async Task<UserTask> UpdateTask(UserTask user)
     {
-        var entry = _context.Update(user);
+        _context.Update(user);
         await _context.SaveChangesAsync();
-        return entry.Entity;
+        return user;
     }
 
     public async Task<UserTask> GetTaskById(Guid id)

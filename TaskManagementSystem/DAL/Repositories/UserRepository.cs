@@ -19,9 +19,9 @@ public class UserRepository : IUserRepository
 
     public async Task<User> InsertUser(User user)
     {
-        var entry = _context.Add(user);
+        _context.Add(user);
         await _context.SaveChangesAsync();
-        return entry.Entity;
+        return user;
     }
 
     public async Task DeleteUser(User user)
@@ -32,9 +32,9 @@ public class UserRepository : IUserRepository
 
     public async Task<User> UpdateUser(User user)
     {
-        var entry = _context.Update(user);
+        _context.Update(user);
         await _context.SaveChangesAsync();
-        return entry.Entity;
+        return user;
     }
 
     public async Task<User> GetUserById(Guid id)

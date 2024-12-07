@@ -49,7 +49,7 @@ public class TaskService : ITaskService
             return new TaskCreationFailed("User doesn't exist");
         }
         
-        var task = _mapper.Map<UserTask>(userTaskDto, opt => opt.AfterMap((_, dest) => dest.User = user));
+        var task = _mapper.Map<UserTask>(userTaskDto, opt => opt.AfterMap((_, dest) => dest.UserId = user.Id));
 
         var insertedTask = await _taskRepository.InsertTask(task);
         
@@ -103,7 +103,7 @@ public class TaskService : ITaskService
         {
             userTasksQuery = userTasksQuery
                 .Skip((pagination.PageNumber.Value - 1) * pagination.PageSize.Value)
-                .Take(pagination.PageNumber.Value);
+                .Take(pagination.PageSize.Value);
         }
 
         var tasks = await userTasksQuery.ToListAsync();
