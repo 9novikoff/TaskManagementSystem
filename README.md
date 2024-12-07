@@ -13,9 +13,10 @@ Task Management System is a simple and secure app for organizing tasks. It lets 
 
 ### Steps to Run Locally  
 1. Clone the repository:  
-   ```bash
+   ```
    git clone (https://github.com/9novikoff/TaskManagementSystem
    cd TaskManagementSystem/TaskManagementSystem
+   ```
 2. Set up the database:
 
 - Update the connection string in appsettings.json.
@@ -26,12 +27,24 @@ Task Management System is a simple and secure app for organizing tasks. It lets 
   ```
   
 3. Build and run the project:
-  ```bash
+  ```
   dotnet build
   dotnet run
   ```
 
-4. Open the application in your browser at https://localhost:5218 (or as specified in your Properties/lauchSettings.json file).
+4. Open the application in your browser at http://localhost:5218 (or as specified in your Properties/lauchSettings.json file).
+
+### Steps to Run using Docker Compose
+1. Clone the repository:  
+   ```
+   git clone (https://github.com/9novikoff/TaskManagementSystem
+   cd TaskManagementSystem
+   ```
+2. Run docker-compose:
+   ```
+   docker compose up
+   ```
+3. Open the application in your browser at http://localhost:8080 (or as specified in your Properties/lauchSettings.json file)
 
 ## Endpoints
 
